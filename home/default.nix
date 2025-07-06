@@ -21,6 +21,7 @@
 
   programs = {
     home-manager.enable = true;
+
     jujutsu = {
       enable = true;
       settings =
@@ -32,6 +33,7 @@
           };
         };
     };
+
     direnv = {
       enable = true;
       nix-direnv.enable = true;
@@ -49,12 +51,14 @@
         set --export fish_greeting ${"''"}
       '';
     };
+
     git = {
       enable = true;
       userEmail = custom.email;
       userName = custom.full-name;
       extraConfig.init.defaultBranch = "main";
     };
+
     tmux = {
       enable = true;
       mouse = true;
