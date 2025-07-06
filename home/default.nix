@@ -16,7 +16,9 @@
       unzip
     ];
     # file = {};
-    # sessionVariables = {};
+    sessionVariables = {
+      EDITOR = "micro";
+    };
   };
 
   programs = {
@@ -38,12 +40,20 @@
       enable = true;
       nix-direnv.enable = true;
     };
-    helix = {
-      enable = true;
-      defaultEditor = true;
-      settings = builtins.fromTOML (builtins.readFile helix/config.toml);
-      languages = builtins.fromTOML (builtins.readFile helix/languages.toml);
-    };
+
+    # Note: at the moment of writing,
+    # Helix doesn't have a workspace security system:
+    # https://github.com/helix-editor/helix/issues/2697
+    # helix = {
+    #   enable = true;
+    #   defaultEditor = true;
+    #   settings = builtins.fromTOML (builtins.readFile helix/config.toml);
+    #   languages = builtins.fromTOML (builtins.readFile helix/languages.toml);
+    # };
+
+    # TODO: consider reverting to Helix once it has a workspace security system.
+    micro.enable = true;
+
     fish = {
       enable = true;
       loginShellInit = ''
