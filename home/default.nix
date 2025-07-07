@@ -14,6 +14,7 @@
       atool
       xclip
       unzip
+      fd
     ];
     # file = {};
     sessionVariables = {
