@@ -15,6 +15,7 @@
       xclip
       unzip
       fd
+      dig
     ];
     # file = {};
     sessionVariables = {
