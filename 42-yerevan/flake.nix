@@ -8,7 +8,13 @@
   in {
     packages.default = pkgs.symlinkJoin {
       name = "my-profile";
-      paths = with pkgs; [helix];
+      paths = with pkgs; [
+        helix
+        jujutsu
+        treefmt
+        nixfmt-rfc-style
+        fish
+      ];
     };
   });
 }

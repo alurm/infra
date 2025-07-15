@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+test -e ~/goinfre/nixsa &&
+exec ~/goinfre/nixsa/bin/nixsa fish --login
+
+set -e
+set -x
+
+cd ~/goinfre
+curl -LO https://github.com/noamraph/nixsa/releases/download/v0.2.0/nixsa-0.2.0-x86_64-linux.tar.xz
+tar xf nixsa-0.2.0-x86_64-linux.tar.xz
+rm nixsa-0.2.0-x86_64-linux.tar.xz
+
+cd ~/my/nix/42-yerevan
+~/goinfre/nixsa/bin/nix profile install .
+
+cd ~
+exec ~/goinfre/nixsa/bin/nixsa fish --login
