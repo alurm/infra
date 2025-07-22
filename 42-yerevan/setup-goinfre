@@ -14,5 +14,7 @@ rm nixsa-0.2.0-x86_64-linux.tar.xz
 cd ~/my/nix/42-yerevan
 ~/goinfre/nixsa/bin/nix profile install .
 
+~/goinfre/nixsa/bin/nix registry pin nixpkgs
+
 cd ~
 exec ~/goinfre/nixsa/bin/nixsa fish --login

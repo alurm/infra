@@ -1,0 +1,9 @@
+"$schema" = "https://jj-vcs.github.io/jj/latest/config-schema.json"
+
+[user]
+name = "Alan Urmancheev"
+email = "alan.urman@gmail.com"
+
+[ui]
+diff-editor = ":builtin"
+default-command = "log"

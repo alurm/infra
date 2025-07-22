@@ -1,7 +1,10 @@
 {
+  inputs.lsbig.url = "github:alurm/lsbig";
+
   outputs = {
     nixpkgs,
     flake-utils,
+    lsbig,
     ...
   }: flake-utils.lib.eachDefaultSystem (system: let
     pkgs = nixpkgs.legacyPackages.${system};
@@ -15,6 +18,12 @@
         nixfmt-rfc-style
         fish
         atool
+        direnv
+        nix-direnv
+        sqlite
+        rlwrap
+        zig
+        lsbig.packages.${system}.default
       ];
     };
   });
