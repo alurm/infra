@@ -14,6 +14,7 @@
         treefmt
         nixfmt-rfc-style
         fish
+        atool
       ];
     };
   });
