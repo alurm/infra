@@ -58,6 +58,9 @@ in
 
         [editor.file-picker]
         hidden = false
+
+        [editor.soft-wrap]
+        enable = true
       '';
 
       "languages.toml" = ''
