@@ -55,6 +55,7 @@ in
 
         [editor]
         auto-pairs = false
+        insert-final-newline = false
 
         [editor.file-picker]
         hidden = false
