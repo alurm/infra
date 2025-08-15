@@ -18,7 +18,23 @@
       in
       {
         packages = {
-          default = pkgs.symlinkJoin {
+
+m3 = pkgs.symlinkJoin {
+
+name = "profile";
+
+paths = with pkgs; [
+
+lsbig.packages.${system}.default
+json2dir.packages.${system}.default
+helix
+fish
+
+];
+
+};
+
+          fourty-two = pkgs.symlinkJoin {
             name = "my-profile";
             paths = with pkgs; [
               lsbig.packages.${system}.default
