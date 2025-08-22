@@ -44,7 +44,7 @@
 
         (writeShellScriptBin "nix2home" ''
           cd ~ || exit 1
-          nix eval ~/My/infra/m3#home --json | ${json2dir.packages.${system}.default}/bin/json2dir || exit 1
+          nix eval ~/My/infra/mac#home --json | ${json2dir.packages.${system}.default}/bin/json2dir || exit 1
         '')
       ];
     };

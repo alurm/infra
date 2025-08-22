@@ -12,6 +12,7 @@ in
       name = ${full-name}
       email = ${email}
     '';
+
     jj."config.toml" = ''
       "$schema" = "https://jj-vcs.github.io/jj/latest/config-schema.json"
 
@@ -23,10 +24,9 @@ in
       diff-editor = ":builtin"
       default-command = ["log", "-r", "all()"]
     '';
+
     fish."config.fish" = ''
       if status is-interactive && status is-login
-        source /nix/var/nix/profiles/default/etc/profile.d/nix.fish
-
         set --export fish_greeting '''
         set --export SHELL (which fish)
         set --export EDITOR hx
