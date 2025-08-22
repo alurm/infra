@@ -11,6 +11,8 @@ in
     window-save-state = always
 
     command = bash -l -c 'exec ~/.nix-profile/bin/fish -l'
+
+    macos-option-as-alt = true
   '';
   
   ".config" = {
