@@ -3,6 +3,16 @@ let
   email = "alan.urman@gmail.com";
 in
 {
+  Library."Application Support"."com.mitchellh.ghostty".config = ''
+    # To avoid a flick at load.
+    cursor-style = block_hollow
+
+    # It's not obvious how to do maximized properly at the moment.
+    window-save-state = always
+
+    command = bash -l -c 'exec ~/.nix-profile/bin/fish -l'
+  '';
+  
   ".config" = {
     git.config = ''
       [init]
