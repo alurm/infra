@@ -23,6 +23,9 @@ in
       [ui]
       diff-editor = ":builtin"
       default-command = ["log", "-r", "all()"]
+
+      [git]
+      colocate = true
     '';
 
     fish."config.fish" = ''
