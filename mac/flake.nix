@@ -32,6 +32,8 @@
         go
         jq
         yq-go
+        exiftool
+        eyed3
 
         bash-language-server
         shfmt

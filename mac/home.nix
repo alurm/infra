@@ -7,6 +7,8 @@ in
     # To avoid a flick at load.
     cursor-style = block_hollow
 
+    cursor-style-blink = false
+
     # It's not obvious how to do maximized properly at the moment.
     window-save-state = always
 
