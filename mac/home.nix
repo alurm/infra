@@ -47,6 +47,7 @@ in
         set --export fish_greeting '''
         set --export SHELL (which fish)
         set --export EDITOR hx
+        set --export --append PATH '/Applications/Visual Studio Code.app/Contents/Resources/app/bin'
 
         if [ (pwd) = ~ ]
           cd My/current
