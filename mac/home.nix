@@ -49,7 +49,7 @@ in
         set --export EDITOR hx
 
         if [ (pwd) = ~ ]
-          cd My
+          cd My/current
         end
       end
     '';
