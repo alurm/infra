@@ -36,6 +36,7 @@
         eyed3
         jq
         gawk
+        moreutils
 
         bash-language-server
         shfmt
