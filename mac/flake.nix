@@ -20,14 +20,12 @@
         lsbig.packages.${system}.default
         json2dir.packages.${system}.default
         helix
-        fish
         jujutsu
         atool
         rlwrap
         ripgrep
         cloc
         git
-        cue
         entr
         go
         jq
@@ -38,6 +36,8 @@
         gawk
         moreutils
 
+        cue
+
         bash-language-server
         shfmt
         shellcheck
@@ -47,10 +47,15 @@
         nix-direnv
         nil
 
-        (writeShellScriptBin "nix2home" ''
-          cd ~ || exit 1
-          nix eval ~/My/current/infra/mac#home --json | ${json2dir.packages.${system}.default}/bin/json2dir || exit 1
-        '')
+        (writeShellApplication {
+          name = "nix2home";
+          text = ''
+            cd ~
+
+            nix eval ~/My/current/infra/mac#home --json |
+            ${json2dir.packages.${system}.default}/bin/json2dir
+          '';
+        })
       ];
     };
   };

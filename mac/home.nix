@@ -12,9 +12,9 @@ in
     # It's not obvious how to do maximized properly at the moment.
     window-save-state = always
 
-    command = bash -l -c 'exec ~/.nix-profile/bin/fish -l'
-
     macos-option-as-alt = true
+
+    theme = Dark+
   '';
   
   ".config" = {
@@ -45,10 +45,9 @@ in
     fish."config.fish" = ''
       if status is-interactive && status is-login
         set --export fish_greeting '''
-        set --export SHELL (which fish)
         set --export EDITOR hx
-        set --export --append PATH '/Applications/Visual Studio Code.app/Contents/Resources/app/bin'
         set --export --prepend PATH ~/.nix-profile/bin
+        set --export --append PATH '/Applications/Visual Studio Code.app/Contents/Resources/app/bin'
 
         if [ (pwd) = ~ ]
           cd My/current
