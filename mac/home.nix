@@ -17,6 +17,10 @@ in
 
     theme = Dark+
   '';
+
+  ".sqliterc" = ''
+    .mode box
+  '';
   
   ".config" = {
     git.config = ''
