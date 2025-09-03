@@ -4,10 +4,11 @@ let
 in
 {
   Library."Application Support"."com.mitchellh.ghostty".config = ''
-    # To avoid a flick at load.
-    cursor-style = block_hollow
+    cursor-style = bar
 
     cursor-style-blink = false
+
+    shell-integration-features = no-cursor
 
     # It's not obvious how to do maximized properly at the moment.
     window-save-state = always
