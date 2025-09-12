@@ -35,7 +35,7 @@
         jq
         gawk
         moreutils
-
+        imagemagick
         cue
 
         bash-language-server

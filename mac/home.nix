@@ -23,14 +23,19 @@ in
   '';
   
   ".config" = {
-    git.config = ''
-      [init]
-      defaultBranch = main
+    git = {
+      config = ''
+        [init]
+        defaultBranch = main
 
-      [user]
-      name = ${full-name}
-      email = ${email}
-    '';
+        [user]
+        name = ${full-name}
+        email = ${email}
+      '';
+      ignore = ''
+        .DS_Store
+      '';
+    };
 
     jj."config.toml" = ''
       "$schema" = "https://jj-vcs.github.io/jj/latest/config-schema.json"
