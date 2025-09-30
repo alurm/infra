@@ -21,6 +21,8 @@ in
   ".sqliterc" = ''
     .mode box
   '';
+
+  ".hushlogin" = "";
   
   ".config" = {
     git = {
