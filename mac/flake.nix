@@ -52,7 +52,7 @@
           text = ''
             cd ~
 
-            nix eval ~/My/system/infra/mac#home --json |
+            nix eval ~/Desktop/System/infra/mac#home --json |
             ${json2dir.packages.${system}.default}/bin/json2dir
           '';
         })

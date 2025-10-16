@@ -59,11 +59,11 @@ in
         set --export fish_greeting '''
         set --export EDITOR hx
         set --export --prepend PATH ~/.nix-profile/bin
-        set --export PLAN9 ~/My/system/plan9port
+        set --export PLAN9 ~/Desktop/System/plan9port
         set --export --append PATH '/Applications/Visual Studio Code.app/Contents/Resources/app/bin' $PLAN9/bin ~/go/bin
 
         if [ (pwd) = ~ ]
-          cd My/current
+          cd ~/Desktop
         end
       end
     '';
