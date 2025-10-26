@@ -1,0 +1,3 @@
+#!/bin/sh
+cd ~/Desktop/Syncthing/TIddlyWiki || exit 1
+exec tiddlywiki --listen
