@@ -23,7 +23,7 @@ in
   '';
 
   ".hushlogin" = "";
-  
+
   ".config" = {
     git = {
       config = ''
@@ -60,7 +60,12 @@ in
         set --export EDITOR hx
         set --export --prepend PATH ~/.nix-profile/bin
         set --export PLAN9 ~/Desktop/System/plan9port
-        set --export --append PATH '/Applications/Visual Studio Code.app/Contents/Resources/app/bin' $PLAN9/bin ~/go/bin
+        set --export --append PATH \
+          '/Applications/Visual Studio Code.app/Contents/Resources/app/bin' \
+          /Applications/Emacs.app/Contents/MacOS \
+          $PLAN9/bin \
+          ~/go/bin \
+        ;
 
         if [ (pwd) = ~ ]
           cd ~/Desktop
