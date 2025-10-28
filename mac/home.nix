@@ -66,10 +66,6 @@ in
           $PLAN9/bin \
           ~/go/bin \
         ;
-
-        if [ (pwd) = ~ ]
-          cd ~/Desktop
-        end
       end
     '';
 
