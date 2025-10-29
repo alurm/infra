@@ -92,6 +92,10 @@ in
           $PLAN9/bin \
           ~/go/bin \
         ;
+
+        if test $SHLVL = 1 && test "$(pwd)" = ~
+          cd Desktop
+        end
       end
     '';
 
