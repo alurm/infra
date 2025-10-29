@@ -3,20 +3,46 @@ let
   email = "alan.urman@gmail.com";
 in
 {
-  Library."Application Support"."com.mitchellh.ghostty".config = ''
-    cursor-style = bar
+  Library = {
+    LaunchAgents."alurm.tiddlywiki.plist" = ''
+      <?xml version="1.0" encoding="utf-8"?>
+      <plist version="1.0">
+      <dict>
 
-    cursor-style-blink = false
+      <key>Label</key>
+      <string>alurm.tiddlywiki</string>
 
-    shell-integration-features = no-cursor
+      <key>KeepAlive</key> <true/>
 
-    # It's not obvious how to do maximized properly at the moment.
-    window-save-state = always
+      <key>ProgramArguments</key>
+      <array>
+      	<string>/bin/sh</string>
+      	<string>-c</string>
+      	<string>-l</string>
+      	<string>
+      		cd ~/Desktop/Syncthing/TiddlyWiki &amp;&amp; exec tiddlywiki --listen
+      	</string>
+      </array>
 
-    macos-option-as-alt = true
+      </dict>
+      </plist>
+    '';
 
-    theme = Dark+
-  '';
+    "Application Support"."com.mitchellh.ghostty".config = ''
+      cursor-style = bar
+
+      cursor-style-blink = false
+
+      shell-integration-features = no-cursor
+
+      # It's not obvious how to do maximized properly at the moment.
+      window-save-state = always
+
+      macos-option-as-alt = true
+
+      theme = Dark+
+    '';
+  };
 
   ".sqliterc" = ''
     .mode box
