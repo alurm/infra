@@ -11,7 +11,11 @@
     ...
   }: let
     system = "aarch64-darwin";
-    pkgs = nixpkgs.legacyPackages.${system};
+    pkgs = import nixpkgs {
+      inherit system;
+      config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [];
+    };
+    lib = pkgs.lib;
   in {
     home = import ./home.nix;
     packages.${system}.default = with pkgs; symlinkJoin {
@@ -19,6 +23,7 @@
       paths = [
         lsbig.packages.${system}.default
         json2dir.packages.${system}.default
+
         helix
         jujutsu
         atool
@@ -27,22 +32,31 @@
         cloc
         git
         entr
-        go
-        jq
         yq-go
         exiftool
         eyed3
-        jq
-        gawk
         moreutils
         imagemagick
+        bat
+        parallel
+        fd
+
+        go
+        jq
+        gawk
         cue
+        ghc
+        ghostscript
+        nodejs
+
+        nodePackages.tiddlywiki
 
         bash-language-server
         shfmt
         shellcheck
 
         nixfmt-rfc-style
+        alejandra
         direnv
         nix-direnv
         nil
@@ -69,6 +83,21 @@
             exec \
             acme \
             -a \
+            "$@"
+          '';
+        })
+
+        (writeShellApplication {
+          name = "my-9term";
+          text = ''
+            PAGER=cat \
+            SHELL=rc \
+            EDITOR=E \
+            TERM=dumb \
+            NO_COLOR=1 \
+            prompt='; ' \
+            exec \
+            9term \
             "$@"
           '';
         })
