@@ -28,7 +28,7 @@
       username = "alurm";
     };
   in {
-    home = import ./home.nix (the // { inherit lib enquote enpath; });
+    home = import ./home.nix (the // { inherit pkgs lib enquote enpath; });
 
     packages.${system}.default = with pkgs; symlinkJoin {
       name = "profile";
@@ -60,8 +60,6 @@
         ghc
         ghostscript
         nodejs
-
-        nodePackages.tiddlywiki
 
         bash-language-server
         shfmt

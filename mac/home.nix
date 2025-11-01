@@ -1,4 +1,5 @@
 {
+  pkgs,
   lib,
   enquote,
   enpath,
@@ -48,11 +49,11 @@
 
         <key>ProgramArguments</key>
         <array>
-        	<string>/bin/sh</string>
-        	<string>-c</string>
+            <string>/usr/local/bin/fish</string>
         	<string>-l</string>
+        	<string>-c</string>
         	<string>
-        		cd ~/Desktop/Syncthing/TiddlyWiki &amp;&amp; exec tiddlywiki --listen
+        		cd ~/Desktop/Syncthing/TiddlyWikis/Main &amp;&amp; exec tiddlywiki --listen
         	</string>
         </array>
 
@@ -135,6 +136,7 @@
               /Applications/Emacs.app/Contents/MacOS \
               $PLAN9/bin \
               ~/go/bin \
+              ${pkgs.nodePackages.tiddlywiki}/bin \
             ;
 
             # Plan 9
