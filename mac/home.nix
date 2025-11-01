@@ -30,6 +30,8 @@
   )
   {
     lib.profile = ''
+      # Otherwise 9term.app seems to set it to the login shell for some reason.
+      SHELL = rc
       cd $home/Desktop
     '';
 
