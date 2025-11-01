@@ -128,6 +128,8 @@
             set --export EDITOR ed
             set --export --prepend PATH ~/.nix-profile/bin
             set --export PLAN9 ~/Desktop/System/plan9port
+            # Use the default MacOS monospace font.
+            set --export font /mnt/font/Menlo-Regular/15a/font
             set --export --append PATH \
               '/Applications/Visual Studio Code.app/Contents/Resources/app/bin' \
               /Applications/Emacs.app/Contents/MacOS \
