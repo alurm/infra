@@ -21,14 +21,14 @@
     enquote = lib.escapeShellArg;
     enpath = x: enquote (builtins.concatStringsSep "/" x);
 
-    the = {
+    my = {
       system-dir = [ "Desktop" "System" ];
       full-name = "Alan Urmancheev";
       email = "alan.urman@gmail.com";
       username = "alurm";
     };
-  in {
-    home = import ./home.nix (the // { inherit pkgs lib enquote enpath; });
+  in with my; {
+    home = import ./home.nix (my // { inherit pkgs lib enquote enpath; });
 
     packages.${system}.default = with pkgs; symlinkJoin {
       name = "profile";
@@ -54,6 +54,7 @@
         fd
 
         go
+        lua5_4
         jq
         gawk
         cue
@@ -71,12 +72,15 @@
         nix-direnv
         nil
 
+        # Needed by home.nix.
+        nodePackages.tiddlywiki
+
         (writeShellApplication {
           name = "nix2home";
           text = ''
             cd ~
 
-            nix eval ~/${enpath the.system-dir}/infra/mac#home --json |
+            nix eval ~/${enpath system-dir}/infra/mac#home --json |
             ${json2dir.packages.${system}.default}/bin/json2dir
           '';
         })
