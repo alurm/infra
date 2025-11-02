@@ -36,7 +36,7 @@
         lsbig.packages.${system}.default
         json2dir.packages.${system}.default
 
-        helix
+        neovim
         jujutsu
         atool
         rlwrap
@@ -78,6 +78,13 @@
 
             nix eval ~/${enpath the.system-dir}/infra/mac#home --json |
             ${json2dir.packages.${system}.default}/bin/json2dir
+          '';
+        })
+
+        (writeShellApplication {
+          name = "o";
+          text = ''
+            exec open -a neovide "$@"
           '';
         })
 

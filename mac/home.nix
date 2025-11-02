@@ -139,17 +139,13 @@
               ${pkgs.nodePackages.tiddlywiki}/bin \
             ;
 
+            cd Desktop
+
             # Plan 9
 
             set --export prompt \n
 
             # End of Plan 9
-
-            if status is-interactive
-              if test $SHLVL = 1 && test "$(pwd)" = ~
-                cd Desktop
-              end
-            end
           end
         '';
       };
