@@ -72,8 +72,11 @@
         nix-direnv
         nil
 
-        # Needed by home.nix.
-        nodePackages.tiddlywiki
+        # HACK: these seemingly need to be in the store by json2dir.
+        # Ideally, this shouldn't be required.
+
+          rclone
+          nodePackages.tiddlywiki
 
         (writeShellApplication {
           name = "nix2home";

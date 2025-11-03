@@ -37,29 +37,49 @@ my @ {
     '';
 
     Library = {
-      LaunchAgents."alurm.tiddlywiki.plist" = ''
-        <?xml version="1.0" encoding="utf-8"?>
-        <plist version="1.0">
-        <dict>
+      LaunchAgents = let
+        make-service = { name, script }: {
+          "${name}.plist" = ''
+            <?xml version="1.0" encoding="utf-8"?>
+            <plist version="1.0">
+              <dict>
+                <key>Label</key>
+                <string>${lib.escapeXML name}</string>
 
-        <key>Label</key>
-        <string>alurm.tiddlywiki</string>
+                <key>KeepAlive</key>
+                <true/>
 
-        <key>KeepAlive</key> <true/>
-
-        <key>ProgramArguments</key>
-        <array>
-            <string>/usr/local/bin/fish</string>
-        	<string>-l</string>
-        	<string>-c</string>
-        	<string>
-        		cd ~/Desktop/Syncthing/TiddlyWikis/Main &amp;&amp; exec tiddlywiki --listen
-        	</string>
-        </array>
-
-        </dict>
-        </plist>
-      '';
+                <key>ProgramArguments</key>
+                <array>
+                  <string>/usr/local/bin/fish</string>
+                  <string>-l</string>
+                  <string>-c</string>
+                  <string>
+                    ${lib.escapeXML script}
+                  </string>
+                </array>
+              </dict>
+            </plist>
+          '';
+        };
+      in {}
+        // make-service {
+          name = "alurm.tiddlywiki.main";
+          script = ''
+            cd ~/Desktop/Syncthing/TiddlyWikis/Main &&
+            exec \
+            ${pkgs.nodePackages.tiddlywiki}/bin/tiddlywiki \
+            --listen port=8080 host=127.0.0.1
+          '';
+        }
+        // make-service {
+          name = "alurm.tiddlywiki.webdav";
+          script = ''
+            cd ~/Desktop/Syncthing/TiddlyWikis/Webdav &&
+            exec rclone serve webdav . --addr=127.0.0.1:8081
+          '';
+        }
+      ;
 
       "Application Support"."com.mitchellh.ghostty".config = ''
         cursor-style = bar
