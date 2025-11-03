@@ -12,6 +12,7 @@ if vim.g.neovide then
 		{ 't', '<D-v>', '<C-\\><C-n>"+pa<Right>' },
 	}) do
 		vim.keymap.set(unpack(setting))
-
 	end
+
+	vim.g.neovide_input_macos_option_key_is_meta = 'both'	
 end
