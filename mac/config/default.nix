@@ -60,7 +60,7 @@ my @ {
             # Seems potentially unnecessary.
             # set --export --prepend PATH ~/.nix-profile/bin
 
-            set --export EDITOR nvim
+            set --export EDITOR ed
 
             set --export PLAN9 ~/Desktop/System/plan9port
 
