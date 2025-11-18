@@ -32,7 +32,11 @@
 
     packages.${system}.default = with pkgs; symlinkJoin {
       name = "profile";
-      paths = [
+      paths = (with emacs.pkgs; [
+        vterm
+        treesit-grammars.with-all-grammars
+        nix-ts-mode
+      ]) ++ [
         lsbig.packages.${system}.default
         json2dir.packages.${system}.default
 
@@ -72,7 +76,7 @@
         nix-direnv
         nil
 
-        # HACK: these seemingly need to be in the store by json2dir.
+        # HACK: these seemingly need to be in the store by TiddlyWiki service installed via json2dir.
         # Ideally, this shouldn't be required.
 
           rclone
