@@ -1,4 +1,4 @@
-my @ {
+{
   pkgs,
   lib,
   enquote,
@@ -38,9 +38,10 @@ my @ {
         colocate = true
       '';
 
-      nvim = {
-        "init.lua" = builtins.readFile ./neovim/init.lua;
-      };
+      # Keep this for now in case I decide to use Neovim again.
+      nvim."init.lua" = builtins.readFile ./neovim/init.lua;
+
+      emacs."init.el" = builtins.readFile ./emacs/init.el;
 
       fish = {
         functions."fish_prompt.fish" = ''
@@ -50,22 +51,32 @@ my @ {
           end
         '';
 
-        "config.fish" = ''
-          if status is-login
-            cd Desktop
-
-            # To-do: this should be somewhere else?
-            set --export fish_greeting '''
-
-            # Seems potentially unnecessary.
-            # set --export --prepend PATH ~/.nix-profile/bin
-
-            set --export EDITOR ed
-
+        "config.fish" = let
+          plan9 = ''
+            # Plan 9.
+            
             set --export PLAN9 ~/Desktop/System/plan9port
 
             # Use the default MacOS monospace font.
             set --export font /mnt/font/Menlo-Regular/15a/font
+
+            set --export prompt \n
+
+            # End of Plan 9.
+          '';
+        in ''
+          if status is-login
+            cd ~/Desktop
+
+            # To-do: should this be set somehow differently?
+            set --export fish_greeting '''
+
+            set --export EDITOR emacs
+
+            ${plan9}
+
+            # Set somewhere else, apparently.
+            # set --export --prepend PATH ~/.nix-profile/bin
 
             set --export --append PATH \
               '/Applications/Visual Studio Code.app/Contents/Resources/app/bin' \
@@ -74,12 +85,6 @@ my @ {
               ~/go/bin \
               ${pkgs.nodePackages.tiddlywiki}/bin \
             ;
-
-            # Plan 9
-
-            set --export prompt \n
-
-            # End of Plan 9
           end
         '';
       };

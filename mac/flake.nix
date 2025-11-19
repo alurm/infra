@@ -76,6 +76,8 @@
         nix-direnv
         nil
 
+	# Keep TiddlyWiki stuff here for now in case I decide to use it again.
+
         # HACK: these seemingly need to be in the store by TiddlyWiki service installed via json2dir.
         # Ideally, this shouldn't be required.
 
