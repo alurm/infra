@@ -40,7 +40,9 @@
         lsbig.packages.${system}.default
         json2dir.packages.${system}.default
 
-        neovim
+        # Not particularly useful at the moment, but cool.
+        parallel
+
         jujutsu
         atool
         rlwrap
@@ -48,13 +50,11 @@
         cloc
         git
         entr
-        yq-go
         exiftool
         eyed3
         moreutils
         imagemagick
         bat
-        parallel
         fd
 
         go
@@ -65,6 +65,10 @@
         ghc
         ghostscript
         nodejs
+
+        (python3.withPackages (_: with _; [
+          ipython
+        ]))
 
         bash-language-server
         shfmt

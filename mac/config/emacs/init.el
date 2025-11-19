@@ -30,11 +30,11 @@
 (setq whitespace-style '(tab-mark))
 (whitespace-mode)
 
-(add-to-list 'backup-directory-alist '(("." . "~/.emacs.d/backups")))
+(add-to-list 'backup-directory-alist '(("." . "~/.config/emacs/backups")))
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 (add-to-list 'treesit-extra-load-path "~/.nix-profile/lib")
-(add-to-list 'auto-save-file-name-transforms '(".*" "~/.emacs.d/auto-saves/" t))
-(add-to-list 'lock-file-name-transforms '(".*" "~/.emacs.d/lock-files/" t))
+(add-to-list 'auto-save-file-name-transforms '(".*" "~/.config/emacs/auto-saves/" t))
+(add-to-list 'lock-file-name-transforms '(".*" "~/.config/emacs/lock-files/" t))
 
 (use-package vterm)
 
@@ -53,3 +53,6 @@
                '((rust-ts-mode rust-mode) .
                  ("rust-analyzer" :initializationOptions
                   (:check (:command "clippy"))))))
+
+(use-package python
+  :hook (python-mode . python-ts-mode))
