@@ -79,12 +79,6 @@ my @ {
             exec rclone serve webdav . --addr=127.0.0.1:8081
           '';
         }
-	// make-service {
-	  name = "alurm.macos.keyboard.caps.delay.disable";
-	  script = ''
-	    exec hidutil property set '{"CapsLockDelayOverride": 0}'
-	  '';
-	}
       ;
 
       "Application Support"."com.mitchellh.ghostty".config = ''

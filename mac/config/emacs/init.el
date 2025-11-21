@@ -49,10 +49,14 @@
 
 (use-package eglot
   :config
-  (add-to-list 'eglot-server-programs
-               '((rust-ts-mode rust-mode) .
-                 ("rust-analyzer" :initializationOptions
-                  (:check (:command "clippy"))))))
+  (dolist (lang '(
+                  ((rust-mode rust-ts-mode) .
+                   ("rust-analyzer"
+                    :initializationOptions
+                    (:check (:command "clippy"))))
+                  ((python-mode python-ts-mode) .
+                   ("pyright-langserver"))))
+    (add-to-list 'eglot-server-programs lang)))
 
 (use-package python
   :hook (python-mode . python-ts-mode))

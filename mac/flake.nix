@@ -66,8 +66,10 @@
         ghostscript
         nodejs
 
+        pyright
         (python3.withPackages (_: with _; [
           ipython
+          requests
         ]))
 
         bash-language-server
