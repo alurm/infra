@@ -38,6 +38,8 @@ my @ {
 
     Library = {
       LaunchAgents = let
+        # Seems like these have to be loaded manually once afterwards.
+        # launchctl load ~/Library/LaunchAgents/...
         make-service = { name, script }: {
           "${name}.plist" = ''
             <?xml version="1.0" encoding="utf-8"?>
@@ -64,21 +66,23 @@ my @ {
         };
       in {}
         // make-service {
-          name = "alurm.tiddlywiki.main";
+          name = "alurm.webdav";
           script = ''
-            cd ~/Desktop/Syncthing/TiddlyWikis/Main &&
-            exec \
-            ${pkgs.nodePackages.tiddlywiki}/bin/tiddlywiki \
-            --listen port=8080 host=127.0.0.1
+            cd ~/Desktop/Syncthing &&
+            exec rclone serve webdav .
           '';
         }
-        // make-service {
-          name = "alurm.tiddlywiki.webdav";
-          script = ''
-            cd ~/Desktop/Syncthing/TiddlyWikis/Webdav &&
-            exec rclone serve webdav . --addr=127.0.0.1:8081
-          '';
-        }
+        # Keep these for now in case I want them back.
+        #
+        # // make-service {
+        #   name = "alurm.tiddlywiki.main";
+        #   script = ''
+        #     cd ~/Desktop/Syncthing/TiddlyWikis/Main &&
+        #     exec \
+        #     ${pkgs.nodePackages.tiddlywiki}/bin/tiddlywiki \
+        #     --listen port=8080 host=127.0.0.1
+        #   '';
+        # }
       ;
 
       "Application Support"."com.mitchellh.ghostty".config = ''
