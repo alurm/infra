@@ -43,6 +43,7 @@
         # Not particularly useful at the moment, but cool.
         parallel
 
+        # Tools
         jujutsu
         atool
         rlwrap
@@ -56,7 +57,9 @@
         imagemagick
         bat
         fd
+        pandoc
 
+        # Programming and configuration languages of sorts
         go
         lua5_4
         jq
@@ -66,16 +69,19 @@
         ghostscript
         nodejs
 
+        # Python
         pyright
         (python3.withPackages (_: with _; [
           ipython
           requests
         ]))
 
+        # Bash
         bash-language-server
         shfmt
         shellcheck
 
+        # Nix
         nixfmt-rfc-style
         alejandra
         direnv
