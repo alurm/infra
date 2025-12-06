@@ -79,7 +79,10 @@
       in
       ''
         if status is-login
-          cd ~/Desktop
+          # This condition is needed e.g. for VS Code, which launches a login shell at the moment.
+          if [ "$(pwd)" = ~ ]
+            cd ~/Desktop
+          end
 
           # To-do: should this be set somehow differently?
           set --export fish_greeting '''
