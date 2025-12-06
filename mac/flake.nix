@@ -40,8 +40,8 @@
         lsbig.packages.${system}.default
         json2dir.packages.${system}.default
 
-        # Not particularly useful at the moment, but cool.
-        parallel
+        # Not particularly useful at the moment, but cool. Keep it just in case.
+        # parallel
 
         # Tools
         jujutsu
@@ -58,6 +58,7 @@
         bat
         fd
         pandoc
+        rclone
 
         # Programming and configuration languages of sorts
         go
@@ -88,13 +89,10 @@
         nix-direnv
         nil
 
-	# Keep TiddlyWiki stuff here for now in case I decide to use it again.
-
+      	# Keep TiddlyWiki stuff here for now in case I decide to use it again.
         # HACK: these seemingly need to be in the store by TiddlyWiki service installed via json2dir.
         # Ideally, this shouldn't be required.
-
-          rclone
-          nodePackages.tiddlywiki
+        # nodePackages.tiddlywiki
 
         (writeShellApplication {
           name = "nix2home";

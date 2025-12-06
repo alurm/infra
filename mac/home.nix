@@ -65,15 +65,15 @@ my @ {
           '';
         };
       in {}
-        // make-service {
-          name = "alurm.webdav";
-          script = ''
-            cd ~/Desktop/Syncthing &&
-            exec rclone serve webdav .
-          '';
-        }
         # Keep these for now in case I want them back.
         #
+        # // make-service {
+        #   name = "alurm.webdav";
+        #   script = ''
+        #     cd ~/Desktop/Syncthing &&
+        #     exec rclone serve webdav .
+        #   '';
+        # }
         # // make-service {
         #   name = "alurm.tiddlywiki.main";
         #   script = ''
@@ -85,6 +85,7 @@ my @ {
         # }
       ;
 
+      # Keep this for now in case I want to use Ghostty again.
       "Application Support"."com.mitchellh.ghostty".config = ''
         cursor-style = bar
 
@@ -105,6 +106,7 @@ my @ {
       .mode box
     '';
 
+    # Suppresses the login message in new terminal sessions.
     ".hushlogin" = "";
 
     ".config" = import ./config my;

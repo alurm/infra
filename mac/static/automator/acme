@@ -1,2 +1,4 @@
 #!/usr/bin/env -S ${SHELL} -l
+# This is (or can be) used by the Automator apps as something to exec into.
+# Not used at the moment.
 exec my-acme
