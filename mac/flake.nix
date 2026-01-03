@@ -32,37 +32,45 @@
 
     packages.${system}.default = with pkgs; symlinkJoin {
       name = "profile";
-      paths = (with emacs.pkgs; [
-        vterm
-        treesit-grammars.with-all-grammars
-        nix-ts-mode
-      ]) ++ [
+      paths =
+      # Keep this in case I decide to use Emacs again.
+      # 
+      # (with emacs.pkgs; [
+      #   vterm
+      #   treesit-grammars.with-all-grammars
+      #   nix-ts-mode
+      # ]) ++
+      [
         lsbig.packages.${system}.default
         json2dir.packages.${system}.default
 
-        # Not particularly useful at the moment, but cool. Keep it just in case.
-        # parallel
-
         # Tools
+
         jujutsu
         atool
         rlwrap
+        git
+
+        ## Used rarely or niche
+        
+        bat
         ripgrep
         cloc
-        git
         entr
         exiftool
         eyed3
         moreutils
         imagemagick
-        bat
         fd
         pandoc
         rclone
+        parallel
 
         # Programming and configuration languages of sorts
+
         go
         lua5_4
+        python3
         jq
         gawk
         cue
@@ -71,6 +79,7 @@
         nodejs
 
         # Python
+
         pyright
         (python3.withPackages (_: with _; [
           ipython
@@ -78,21 +87,25 @@
         ]))
 
         # Bash
+
         bash-language-server
         shfmt
         shellcheck
 
         # Nix
-        nixfmt-rfc-style
-        alejandra
+
         direnv
         nix-direnv
         nil
 
-      	# Keep TiddlyWiki stuff here for now in case I decide to use it again.
-        # HACK: these seemingly need to be in the store by TiddlyWiki service installed via json2dir.
-        # Ideally, this shouldn't be required.
-        # nodePackages.tiddlywiki
+        ## Don't remember which formatter is better, add both.
+
+        nixfmt-rfc-style
+        alejandra
+
+        # JavaScript
+
+        prettier
 
         (writeShellApplication {
           name = "nix2home";
@@ -104,29 +117,39 @@
           '';
         })
 
-        (writeShellApplication {
-          name = "o";
-          text = ''
-            exec open -a neovide "$@"
-          '';
-        })
+      	# Keep TiddlyWiki stuff here for now in case I decide to use it again.
+      	# 
+        # HACK: these seemingly need to be in the store by TiddlyWiki service installed via json2dir.
+        # Ideally, this shouldn't be required.
+        # nodePackages.tiddlywiki
 
+        # Keep this in case I decide to use Neovim.
+        # 
+        # (writeShellApplication {
+        #   name = "o";
+        #   text = ''
+        #     exec open -a neovide "$@"
+        #   '';
+        # })
+
+        # Keep this in case I decide to use Acme.
+        # 
         # This one is a bit complex but let's keep it this way for now.
-        (writeShellApplication {
-          name = "my-acme";
-          text = ''
-            PAGER=cat \
-            SHELL=rc \
-            EDITOR=E \
-            TERM=dumb \
-            NO_COLOR=1 \
-            prompt=$'\n' \
-            exec \
-            acme \
-            -a \
-            "$@"
-          '';
-        })
+        # (writeShellApplication {
+        #   name = "my-acme";
+        #   text = ''
+        #     PAGER=cat \
+        #     SHELL=rc \
+        #     EDITOR=E \
+        #     TERM=dumb \
+        #     NO_COLOR=1 \
+        #     prompt=$'\n' \
+        #     exec \
+        #     acme \
+        #     -a \
+        #     "$@"
+        #   '';
+        # })
       ];
     };
   };
