@@ -53,6 +53,7 @@
 
         ## Used rarely or niche
         
+        gemini-cli
         bat
         ripgrep
         cloc
@@ -108,7 +109,7 @@
         prettier
 
         (writeShellApplication {
-          name = "nix2home";
+          name = "update-nix-managed-files";
           text = ''
             cd ~
 
