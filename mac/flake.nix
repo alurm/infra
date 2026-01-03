@@ -99,7 +99,7 @@
           text = ''
             cd ~
 
-            nix eval ~/${enpath system-dir}/infra/mac#home --json |
+            nix eval ~/${enpath system-dir}/nix/mac#home --json |
             ${json2dir.packages.${system}.default}/bin/json2dir
           '';
         })
