@@ -2,6 +2,7 @@
   inputs = {
     lsbig.url = "github:alurm/lsbig";
     json2dir.url = "github:alurm/json2dir";
+
   };
   
   outputs = {
@@ -113,7 +114,9 @@
           text = ''
             cd ~
 
-            nix eval ~/${enpath system-dir}/nix/mac#home --json |
+            # --quiet --quiet removes warnings for uncommited changes.
+            # I do not find them to be useful.
+            nix eval ~/${enpath system-dir}/nix/mac#home --json --quiet --quiet "$@" |
             ${json2dir.packages.${system}.default}/bin/json2dir
           '';
         })
