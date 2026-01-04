@@ -70,6 +70,7 @@
 
         # Programming and configuration languages of sorts
 
+        zig
         go
         lua5_4
         python3
