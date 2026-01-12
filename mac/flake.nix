@@ -3,12 +3,16 @@
     lsbig.url = "github:alurm/lsbig";
     json2dir.url = "github:alurm/json2dir";
 
+    ki-editor.url = "github:ki-editor/ki-editor";
+    fresh.url = "github:sinelaw/fresh";
   };
   
   outputs = {
     nixpkgs,
     lsbig,
     json2dir,
+    ki-editor,
+    fresh,
     ...
   }: let
     system = "aarch64-darwin";
@@ -53,6 +57,12 @@
         git
         ffmpeg
 
+        # Text editors
+
+        ki-editor.packages.${system}.default
+        helix
+        fresh
+
         ## Used rarely or niche
         
         gemini-cli
@@ -68,10 +78,10 @@
         pandoc
         rclone
         parallel
+        tiddlywiki
 
         # Programming and configuration languages of sorts
 
-        zig
         go
         lua5_4
         python3
@@ -81,6 +91,11 @@
         ghc
         ghostscript
         nodejs
+
+        # Zig
+
+        zig
+        zls
 
         # Python
 
