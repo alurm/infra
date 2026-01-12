@@ -32,9 +32,8 @@ pkgs: {
     in
     ''
       if status is-login
-        # This condition is needed e.g. for VS Code, which launches a login shell at the moment.
         if [ "$(pwd)" = ~ ]
-          cd ~/Desktop
+          cd ~/My
         end
 
         # To-do: should this be set somehow differently?

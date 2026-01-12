@@ -23,7 +23,7 @@
     enpath = x: enquote (builtins.concatStringsSep "/" x);
 
     my = {
-      system-dir = [ "Desktop" "System" ];
+      system-dir = [ "My" "System" ];
       full-name = "Alan Urmancheev";
       email = "alan.urman@gmail.com";
       username = "alurm";
@@ -51,6 +51,7 @@
         atool
         rlwrap
         git
+        ffmpeg
 
         ## Used rarely or niche
         
