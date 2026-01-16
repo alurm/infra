@@ -5,6 +5,31 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+
+    {
+      # Enable the OpenSSH daemon.
+      services.openssh.enable = true;
+      users.users.root = {
+        openssh.authorizedKeys.keys = [
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILTa5MTL2Olu9Tcm9JoWfl7PoTmzHNSzXuGEl9gtzl8r alurm@mac"
+        ];
+      };
+    }
+
+    {
+      services.caddy = {
+        enable = true;
+        extraConfig = ''
+          alurm.mooo.com {
+            respond "Hello, world!"
+          }
+        '';
+        virtualHosts.localhost.extraConfig = ''
+          respond "Local, host!"
+        '';
+      };
+      networking.firewall.allowedTCPPorts = [80 443];
+    }
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -79,14 +104,6 @@
   # };
 
   # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-  users.users.root = {
-    openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILTa5MTL2Olu9Tcm9JoWfl7PoTmzHNSzXuGEl9gtzl8r alurm@mac"
-    ];
-  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
