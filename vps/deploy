@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+set -o pipefail
+
+# Realpath should bypass symlinks.
+cd "$(dirname "$(realpath "$0")")" || exit 1
+
+remote=root@alurm.mooo.com
+# Escape to be sure.
+remote_path=$(jq -r -n --arg path /etc/nixos '$path | @sh')
+remote_args=$(jq -r -n '$ARGS.positional | @sh' --args -- "$@")
+
+# shellcheck disable=SC2029
+# (We do escape this for the remote on the client side on purpose.)
+tar c --no-xattrs . |
+ssh "$remote" " cd $remote_path && tar -x --no-same-owner" ||
+exit 1
+
+ssh -t "$remote" "cd $remote_path && nixos-rebuild --flake . $remote_args" ||
+exit 1
