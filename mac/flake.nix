@@ -56,6 +56,7 @@
         rlwrap
         git
         ffmpeg
+        yt-dlp
 
         # Text editors
 
