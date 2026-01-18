@@ -27,7 +27,7 @@
     enpath = x: enquote (builtins.concatStringsSep "/" x);
 
     my = {
-      system-dir = [ "My" "System" ];
+      system-dir = [ "My" "code" ];
       full-name = "Alan Urmancheev";
       email = "alan.urman@gmail.com";
       username = "alurm";
