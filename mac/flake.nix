@@ -128,7 +128,7 @@
         prettier
 
         (writeShellApplication {
-          name = "update-nix-managed-files";
+          name = "nix-update-managed-files";
           text = ''
             cd ~
 
