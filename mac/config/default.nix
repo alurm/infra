@@ -58,7 +58,7 @@
       theme = "vim_dark_high_contrast"
 
       [editor]
-      auto-pairs = false
+      auto-pairs = true
       insert-final-newline = false
 
       [editor.file-picker]
