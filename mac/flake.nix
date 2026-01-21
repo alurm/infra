@@ -127,6 +127,8 @@
 
         prettier
 
+        # Etcetera
+
         (writeShellApplication {
           name = "nix-update-managed-files";
           text = ''
