@@ -1,0 +1,11 @@
+[language-server.rust-analyzer.config]
+check.command = "clippy"
+
+[[language]]
+name = "nix"
+formatter = { command = "alejandra" }
+
+[[language]]
+name = "javascript"
+formatter = { command = "prettier", args = ["--parser", "typescript"] }
+auto-format = true

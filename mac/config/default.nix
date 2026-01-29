@@ -54,27 +54,7 @@
   '';
 
   helix = {
-    "config.toml" = ''
-      theme = "vim_dark_high_contrast"
-
-      [editor]
-      auto-pairs = true
-      insert-final-newline = false
-
-      [editor.file-picker]
-      hidden = false
-
-      [editor.soft-wrap]
-      enable = true
-    '';
-
-    "languages.toml" = ''
-      [language-server.rust-analyzer.config]
-      check.command = "clippy"
-
-      [[language]]
-      name = "nix"
-      formatter = { command = "alejandra" }
-    '';
+    "config.toml" = builtins.readFile ./helix/config.toml;
+    "languages.toml" = builtins.readFile ./helix/languages.toml;
   };
 }
